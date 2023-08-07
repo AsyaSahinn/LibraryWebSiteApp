@@ -52,9 +52,9 @@ namespace Test.Controllers
         }
 
         [HttpGet] 
-        public async Task<IActionResult> GetBorrowBookDetailByBorrowId(int borrowId)
+        public async Task<IActionResult> GetBorrowBookDetailByBookId(int bookId)
         {
-            var barrowDetail = await _borrowBooksRepository.GetById(borrowId);
+            var barrowDetail = await _borrowBooksRepository.GetBorrowBookDetailByBookId(bookId);
             var bookDetail = await _borrowBooksRepository.GetBookBarrowBookInfoById(barrowDetail.Id);
             var userDetail = await _borrowBooksRepository.GetBookBarrowUserInfoById(barrowDetail.Id);
 

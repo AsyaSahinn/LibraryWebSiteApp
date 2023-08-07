@@ -26,8 +26,29 @@
         <input asp-for="ImagePath" type="file" class="form-control-file" />
         <span asp-validation-for="ImagePath" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Upload</button>
+    <button id="uploadImageButton" type="button" class="btn btn-primary btn-block">Upload Image</button>
 
     <button type="submit" class="btn btn-primary">Add Book</button>
 </form>
+
+@section scripts {
+    <script>
+        document.getElementById("uploadImageButton").addEventListener("click", function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/UploadImage", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Request successful, do something if needed
+                    } else {
+                        // Request failed, handle error if needed
+                    }
+                }
+            };
+            xhr.send();
+        });
+    </script>
+}
+
 

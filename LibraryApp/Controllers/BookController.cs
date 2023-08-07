@@ -1,7 +1,6 @@
 ﻿using LibraryApp.Models.DTO;
 using LibraryApp.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Metrics;
 using Test.DAL.Abstract;
 
 
@@ -19,9 +18,8 @@ namespace Test.Controllers
 
         }
 
-        //[HttpPost]
-        public IActionResult AddBook()
-        {
+        //[HttpGet]
+        public IActionResult AddBook() {
             return View();
         }
 
@@ -58,6 +56,24 @@ namespace Test.Controllers
             return View(book);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IFormFile file)
+        {
+            if (file != null)
+            {
+                string imageExtension = Path.GetExtension(file.FileName);
+
+                string imageName = Guid.NewGuid() + imageExtension;
+
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/BookImages/{imageName}");
+
+                using var stream = new FileStream(path, FileMode.Create);
+
+                await file.CopyToAsync(stream);
+            }
+
+            return Ok();
+        }
 
     }
 }

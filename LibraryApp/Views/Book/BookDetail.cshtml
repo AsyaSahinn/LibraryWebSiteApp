@@ -1,4 +1,5 @@
-﻿@model LibraryApp.Models.Entity.Book
+﻿@using LibraryApp.Models.Entity;
+@model LibraryApp.Models.Entity.Book
 
 @{
     ViewData["Title"] = "Book Details";
@@ -12,6 +13,8 @@
     <p>Is Borrowed: @(Model.IsBorrow ? "Yes" : "No")</p>
     <img src="/BookImages/askveoburcinler.jpeg" alt="" height=100 width=200 />
 </div>
+
+<div id="borrowDetails"></div>
 
 @if (!Model.IsBorrow)
 {
@@ -35,5 +38,39 @@
         </form>
     </div>
 }
+else
+{
+    <script>
+        async function fetchBorrowDetails(bookId) {
+            const response = await fetch(`GetBorrowBookDetailByBookId?bookId=${bookId}`);
+            const data = await response.json();
+            return data;
+        }
+
+       
+        const bookId = @Model.Id; 
+        fetchBorrowDetails(bookId)
+            .then(data => {
+                console.log(data);
+                document.getElementById('borrowDetails').innerHTML = 
+                `
+                    <h4>Borrow Details</h4>
+                    <p>User Name: ${data.userName}</p>
+                    <p>User Surname: ${data.userSurname}</p>
+                    <p>Borrow Date: ${data.borrowDate}</p>
+                    <p>Due Date: ${data.dueDate}</p>
+                    ${data.returnDate ? `<p>Return Date: ${data.returnDate}</p>` : ''}
+                    <!-- Display other properties... -->
+                `;
+            });
+    </script>
+ 
+
+}
+
+
+
+
+
 
 
