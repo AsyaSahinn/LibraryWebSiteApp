@@ -6,7 +6,7 @@ using Test.DAL.Abstract;
 
 namespace Test.Controllers
 {
-
+    
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

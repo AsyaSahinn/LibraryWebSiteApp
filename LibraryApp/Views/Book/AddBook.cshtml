@@ -50,27 +50,37 @@
         </div>
     </form>
 </div>
+    <script>
+        document.getElementById("uploadImageButton").addEventListener("click", function () {
+            var fileInput = document.querySelector('input[type="file"]');
+            var file = fileInput.files[0];
+
+            var formData = new FormData();
+            formData.append("file", file);
+
+            // AJAX isteği ile resmi yükleyin
+            fetch("/Book/UploadImage", {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Yükleme işlemi tamamlandığında yapılacak işlemler burada
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error("Hata oluştu: ", error);
+                });
+        });
+    </script>
+  
 
 
-    @section scripts {
-        <script>
-            document.getElementById("uploadImageButton").addEventListener("click", function () {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "/UploadImage", true);
-                xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            // Request successful, do something if needed
-                        } else {
-                            // Request failed, handle error if needed
-                        }
-                    }
-                };
-                xhr.send();
-            });
-        </script>
-    }
+
+
+
+
+
 
 </body>
 </html>

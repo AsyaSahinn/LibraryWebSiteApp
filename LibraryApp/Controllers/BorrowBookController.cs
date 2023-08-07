@@ -1,14 +1,15 @@
-﻿using LibraryApp.Models.DTO;
+﻿using Azure;
+using LibraryApp.Models.DTO;
 using LibraryApp.Models.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Test.DAL.Abstract;
 using Test.DAL.Concrete;
-
 namespace Test.Controllers
 {
- 
+
+
     public class BorrowBookController : Controller
     {
         private  IBorrowBooksRepository _borrowBooksRepository;
@@ -69,9 +70,10 @@ namespace Test.Controllers
                     DueDate = barrowDetail.DueDate.ToShortDateString(),
             };
 
-            return Ok(model);   
+            return Ok(model);
         }
-
+        
+    
 
 
     }

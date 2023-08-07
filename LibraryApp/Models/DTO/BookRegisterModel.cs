@@ -6,7 +6,7 @@
 
         public string Author { get; set; }
 
-        public string ImagePath { get; set; }    
+        public IFormFile ImagePath { get; set; }    
 
 
 

@@ -6,7 +6,7 @@ using Test.DAL.Abstract;
 
 namespace Test.Controllers
 {
-    
+   
     public class BookController : Controller
     {
         private  readonly IBookRepository _bookRepository;
@@ -17,19 +17,24 @@ namespace Test.Controllers
 
         }
 
-        //[HttpGet]
-        public IActionResult AddBook() {
+
+
+
+        public async Task<IActionResult> AddBook()
+        {
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddBook([FromForm] BookRegisterModel book)
         {
+            var imageName = book.ImagePath.FileName;
             Book model = new()
             {
                 Name = book.Name,
                 Author = book.Author,
-                ImagePath= book.ImagePath
+                ImagePath= imageName,
             };
             await _bookRepository.Create(model);
             return View(book);
@@ -57,15 +62,12 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadImage(IFormFile file)
+        public async Task<IActionResult> UploadImage(IFormFile file,string title)
         {
             if (file != null)
             {
-                string imageExtension = Path.GetExtension(file.FileName);
 
-                string imageName = Guid.NewGuid() + imageExtension;
-
-                string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/BookImages/{imageName}");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/BookImages/{file.FileName}");
 
                 using var stream = new FileStream(path, FileMode.Create);
 

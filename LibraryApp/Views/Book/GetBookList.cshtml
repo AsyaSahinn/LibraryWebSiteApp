@@ -41,7 +41,7 @@
                         <td style="text-align: center;">@book.Author</td>
                         <td style="text-align: center;">@(book.IsBorrow ? "Yes" : "No")</td>
                         <td style="text-align: center;">
-                            <img src="~/BookImages/@book.ImagePath" class="book-image" />
+                            <img src="/BookImages/@book.ImagePath" class="book-image" />
                         </td>
                         <td style="text-align: center;">
                             <a asp-controller="Book" asp-action="BookDetail" asp-route-bookId="@book.Id" class="btn btn-primary">Details</a>
