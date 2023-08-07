@@ -1,0 +1,29 @@
+﻿@using LibraryApp.Models.Entity;
+@model List<BorrowBooks>
+
+@{
+    ViewData["Title"] = "Book List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+    
+ <table class="table">
+        <tr>
+            <th>BookID</th>
+            <th>UserId</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+        </tr>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.BookId</td>
+                <td>@book.UserId</td>
+                <td>@book.BorrowDate.ToString("yyyy-MM-dd")</td>
+                <td>@book.DueDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+ </table>
+

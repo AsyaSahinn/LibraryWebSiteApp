@@ -1,0 +1,47 @@
+﻿@using LibraryApp.Models.Entity;
+@model List<Book>
+
+@{
+    ViewData["Title"] = "Book List";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>IsBorrow</th>
+            <th>Image</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Name</td>
+                <td>@book.Author</td>
+                <td>@book.IsBorrow</td>
+                <td>  <img src="/BookImages/askveoburcinler.jpeg" alt="" height=100 width=200 /></td>
+                <td>
+                    <a asp-controller="Book" asp-action="BookDetail" asp-route-bookId="@book.Id" class="btn">Details</a>
+                </td>
+
+              
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+
+<div class="d-grid align-items-center mt-20">
+    <a asp-controller="Book" asp-action="AddBook" class="btn btn-primary btn-block">Add New Book</a>
+</div>
+
+
+
+

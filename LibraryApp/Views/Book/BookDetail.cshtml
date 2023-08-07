@@ -1,0 +1,39 @@
+﻿@model LibraryApp.Models.Entity.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>@Model.Name</h3>
+    <p>Author: @Model.Author</p>
+    <p>Is Borrowed: @(Model.IsBorrow ? "Yes" : "No")</p>
+    <img src="/BookImages/askveoburcinler.jpeg" alt="" height=100 width=200 />
+</div>
+
+@if (!Model.IsBorrow)
+{
+    <div id="borrowForm">
+        <h4>Borrow this Book</h4>
+        <form asp-controller="BorrowBook" asp-action="AddBorrowBook" method="post" >  
+            <div class="form-group">
+                <label for="UserName">User Name:</label>
+                <input type="text" class="form-control" id="UserName" name="UserName" />
+            </div>
+            <div class="form-group">
+                <label for="UserSurname">User Surname:</label>
+                <input type="text" class="form-control" id="UserSurname" name="UserSurname" />
+            </div>
+            <div class="form-group">
+                <label for="UserSurname">Due Date</label>
+                <input type="datetime-local" class="form-control" id="DueDate" name="DueDate" />
+            </div>
+            <input type="hidden" name="bookId" value="@Model.Id" />
+            <button type="submit" class="btn btn-primary">Borrow</button>
+        </form>
+    </div>
+}
+
+

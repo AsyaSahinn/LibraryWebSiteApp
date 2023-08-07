@@ -1,0 +1,35 @@
+﻿@*@model LibraryApp.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Add Borrowed Book";
+}
+
+<div class="container pt-5">
+    <div class="col-md-6">
+        <h2>Add Borrowed Book</h2>
+        <form method="post" asp-controller="BorrowBook" asp-action="AddBorrowBook" asp-route-bookId="1">
+            <div class="form-group">
+
+                <div class="form-group">
+                    <label asp-for="BorrowModel.UserName"> UserName </label>
+                    <input type="text" class="form-control" asp-for="BorrowModel.UserName" />
+                    <span asp-validation-for="BorrowModel.UserName" class="text-danger"></span>
+                </div>
+                <!-- Diğer form alanları -->
+
+                <button type="submit" class="btn btn-dark">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h2>Book Details</h2>
+<form asp-controller="Book" asp-action="GetBookDetailByBookId" asp-route-bookId="1">
+    <div>
+        <h3>@Model.BookModel.Name</h3>
+        <p>Author: @Model.BookModel.Author</p>
+        <!-- Diğer özellikleri görüntülemek için gerekli HTML kodları -->
+    </div>
+</form>
+
+*@
