@@ -14,10 +14,10 @@ namespace LibraryApp.Models.DTO
 
         public string UserSurname { get; set; }
 
-        public DateTime? ReturnDate { get; set; }
+        public string? ReturnDate { get; set; }
 
-        public DateTime BorrowDate { get; set; }
+        public string BorrowDate { get; set; }
 
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; }
     }
 }

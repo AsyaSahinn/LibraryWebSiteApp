@@ -8,8 +8,7 @@ using Test.DAL.Concrete;
 
 namespace Test.Controllers
 {
-    [Route("[action]")]
-    [ApiController]
+ 
     public class BorrowBookController : Controller
     {
         private  IBorrowBooksRepository _borrowBooksRepository;
@@ -65,9 +64,9 @@ namespace Test.Controllers
                     Author=bookDetail.Author,
                     UserName=userDetail.Name,
                     UserSurname=userDetail.Surname,
-                    ReturnDate = barrowDetail.ReturnDate ??  null,
-                    BorrowDate = barrowDetail.BorrowDate,
-                    DueDate = barrowDetail.DueDate,
+                    ReturnDate = barrowDetail.ReturnDate.ToString() ??  "null",
+                    BorrowDate = barrowDetail.BorrowDate.ToShortDateString(),
+                    DueDate = barrowDetail.DueDate.ToShortDateString(),
             };
 
             return Ok(model);   

@@ -6,8 +6,7 @@ using Test.DAL.Abstract;
 
 namespace Test.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
+
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

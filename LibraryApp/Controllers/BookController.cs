@@ -6,8 +6,7 @@ using Test.DAL.Abstract;
 
 namespace Test.Controllers
 {
-    [Route("[action]")]
-    [ApiController]
+    
     public class BookController : Controller
     {
         private  readonly IBookRepository _bookRepository;
@@ -36,12 +35,13 @@ namespace Test.Controllers
             return View(book);
         }
 
+     
         [HttpGet]
         public async Task<IActionResult> GetBookList()
         {
             var books = await _bookRepository.GetAll();
 
-            return View(books); ;
+            return View(books); 
         }
         [HttpGet]
         public async Task<IActionResult> BookDetail(int bookId)
