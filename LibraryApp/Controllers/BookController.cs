@@ -26,6 +26,13 @@ namespace Test.Controllers
         [HttpPost]
         public async Task<IActionResult> AddBook([FromForm] BookRegisterModel book)
         {
+            if (string.IsNullOrEmpty(book.Name) || string.IsNullOrEmpty(book.Author) || book.ImagePath == null)
+            {
+                // Eksik bilgi hatası için Toastr kullanarak uyarı mesajı göster
+                TempData["ErrorMessage"] = "Please fill in all fields.";
+                return RedirectToAction("AddBook"); // Yönlendirme yapılacak sayfa adını buraya yazın
+            }
+
             var imageName = book.ImagePath.FileName; //İmagePath file tipinde bir property olduğu için database'e kayıt işleminde string bir değer olan FileName bilgisi alınıyor.
             Book model = new()
             {

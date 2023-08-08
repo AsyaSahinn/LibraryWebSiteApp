@@ -24,7 +24,7 @@
 <div class="container mt-5 form-container">
     <h2 class="text-center">@ViewData["Title"]</h2>
 
-    <form asp-action="AddBook" method="post" enctype="multipart/form-data">
+        <form asp-action="AddBook" method="post" enctype="multipart/form-data" class="my-form-class">
         <div class="form-group">
             <label asp-for="Name">Name:</label>
             <input asp-for="Name" class="form-control" />
@@ -71,6 +71,17 @@
                 .catch(error => {
                     console.error("Hata oluştu: ", error);
                 });
+        });
+        document.querySelector('.my-form-class').addEventListener("submit", function (event) {
+            var nameInput = document.querySelector('input[name="Name"]');
+            var authorInput = document.querySelector('input[name="Author"]');
+            var imageInput = document.querySelector('input[name="ImagePath"]');
+
+            if (!nameInput.value.trim() || !authorInput.value.trim() || !imageInput.value) {
+                event.preventDefault(); // Form gönderimini engelle
+
+                toastr.error("Please fill in all fields.");
+            }
         });
     </script>
   

@@ -515,3 +515,5 @@ C:\Users\asya\Desktop\test\LibraryApp\obj\Debug\net7.0\LibraryApp.pdb
 C:\Users\asya\Desktop\test\LibraryApp\obj\Debug\net7.0\LibraryApp.genruntimeconfig.cache
 C:\Users\asya\Desktop\test\LibraryApp\obj\Debug\net7.0\ref\LibraryApp.dll
 C:\Users\asya\Desktop\test\LibraryApp\bin\Debug\net7.0\bundleconfig.json
+C:\Users\asya\Desktop\test\LibraryApp\bin\Debug\net7.0\package-lock.json
+C:\Users\asya\Desktop\test\LibraryApp\bin\Debug\net7.0\package.json
