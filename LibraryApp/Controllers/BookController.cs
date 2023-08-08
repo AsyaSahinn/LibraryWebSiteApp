@@ -49,6 +49,8 @@ namespace Test.Controllers
         public async Task<IActionResult> GetBookList()
         {
             var books = await _bookRepository.GetAll(); //GetBookList.cshmtl sayfasında görüntülenen kitapların listesi
+            books=books.OrderBy(x => x.Name).ToList();
+            
             return View(books);
         }
 

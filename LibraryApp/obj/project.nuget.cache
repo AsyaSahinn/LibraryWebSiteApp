@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zPNL6WhJ454ETwKdlzTgSPdf1nkmEFT6v8a2n22hFdeM9erN/4LNx8kwNAEyxAwS7wBykWwvdc1FvMD8CY7I1g==",
+  "dgSpecHash": "21jUATAjrMOIIL9YJI2fY5Bo+7HO60h9gTHtAMb8qlqKwNMBbbiJ5uRRk33NpPmiTDiE98dnfWH/HbLPcSp2kw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asya\\Desktop\\test\\LibraryApp\\LibraryApp.csproj",
+  "projectFilePath": "C:\\Users\\asya\\Desktop\\new\\LibraryWebSiteApp\\LibraryApp\\LibraryApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asya\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\asya\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
